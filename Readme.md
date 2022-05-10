@@ -13,7 +13,7 @@ python main.py multiple --config="config/multiple.yaml"
 ```
 The configuration file is <config/multiple.yaml>.
 
-## Usage
+## Data format
 All the images are pre-resized to (256, 256) and written into an hdf5 file.
 The hdf5 file have four datasets:
 - **Image** dataset of (B, 256, 256, 3) containing all images
