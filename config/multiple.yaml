@@ -1,0 +1,37 @@
+outputdir: # output directory
+input_h5: # input h5py data
+dataloader_args: 
+  dataloader_args:
+    num_workers: 8
+  sampler_args:
+    n_instances: 4 # None if use all instances
+    batch_size: 8
+    n_repeat: 1
+model: MultipleInstanceBaseline # MultipleInstanceReconstructor
+model_args:
+  backbone: densenet201
+  fusion: MeanFusion # CNNFusion # TransformerFusion # MeanFusion # MultiHeadFusion # 
+  fusion_args:
+    num_heads: 2
+    dropout: 0.2
+    n_layers: 1
+  n_classes: 10
+  offline: True
+optimizer: Adam
+optimizer_args:
+  lr: 0.0001
+criterion: ReconstructionLoss
+criterion_args: 
+  lambd: 0.9
+n_epochs: 100
+n_iters: 4000
+saving_interval: 20
+scheduler: ReduceLROnPlateau
+scheduler_args:
+  mode: min
+  factor: 0.1
+  patience: 3
+  cooldown: 1
+  verbose: False
+  threshold: 0.001
+patience: 10

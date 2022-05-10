@@ -1,0 +1,27 @@
+outputdir: # output directory
+input_h5: # input h5py data
+dataloader_args: 
+  batch_size: 16
+  shuffle: True
+  num_workers: 8
+model: MaskModel # can be chosen from Baseline, MaskModel, Reconstructor
+model_args:
+  backbone: densenet201 # can be chosen from resnet152, densenet201
+  n_classes: 10
+optimizer: Adam
+optimizer_args:
+  lr: 0.0001
+criterion: ReconstructionLoss
+criterion_args: 
+  lambd: 0.9
+n_epochs: 100
+saving_interval: 20
+scheduler: ReduceLROnPlateau
+scheduler_args:
+  mode: min
+  factor: 0.1
+  patience: 3
+  cooldown: 1
+  verbose: False
+  threshold: 0.001
+patience: 10
